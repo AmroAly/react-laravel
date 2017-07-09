@@ -28,9 +28,9 @@ Vagrant.configure("2") do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine and only allow access
   # via 127.0.0.1 to disable public access
-   config.vm.network "forwarded_port", guest: 80, host: 4000, host_ip: "127.0.0.1"
-	config.vm.network "forwarded_port", guest: 8081, host: 8081
-	
+   #config.vm.network "forwarded_port", guest: 80, host: 4000, host_ip: "127.0.0.1"
+	#config.vm.network "forwarded_port", guest: 8081, host: 8081
+
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network "private_network", ip: "192.168.33.10"
@@ -44,7 +44,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  
+
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
@@ -72,15 +72,16 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
    #config.vm.provision "shell", path: "deployLamp.sh", privileged: false
   # config.vm.provision "shell", path: "npmStart.sh", privileged: false, run: "always"
-	config.vm.synced_folder "www", "/var/www/"
-	
+   # config.vm.synced_folder ".", "/vagrant", disabled: true 
+   config.vm.provision "file", source: "001-talented.conf", destination: "/tmp/001-talented.conf"
+	config.vm.synced_folder "www", "/var/www/", :mount_options => ["dmode=777","fmode=666"]  # , id: "vagrant-www", :owner => "vagrant", :group => "vagrant"
 	config.vm.define "backend" do |backend|
-		backend.vm.provision "shell", path: "deployLamp", privileged: false
+		backend.vm.provision "shell", path: "deployLamp.sh", privileged: false
 		backend.vm.network "private_network", ip: "172.28.128.10"
 	end
-	
+
 	config.vm.define "frontend" do |frontend|
-		frontend.vm.provision "shell", path: "deployNode", privileged: false
+		frontend.vm.provision "shell", path: "deployNode.sh", privileged: false
 		frontend.vm.network "private_network", ip: "172.28.128.100"
 	end
 end

@@ -15,10 +15,15 @@ sudo service mysql start
 
 mysql -u root -p12345 < /vagrant/createUser.sql
 
-echo "ServerName localhost" | sudo tee /etc/apache2/conf-available/servername.conf
+echo "ServerName localhost" | sudo tee /etc/apache2/conf-enabled/servername.conf
 sudo a2enconf servername
 sudo a2dismod php5
 sudo a2enmod php7.0
+sudo service apache2 restart
+
+sudo a2dissite 000-default.conf
+sudo cp /tmp/001-talented.conf /etc/apache2/sites-available
+sudo a2ensite  001-talented.conf
 sudo service apache2 restart
 
 sudo a2enmod rewrite
