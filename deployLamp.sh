@@ -45,7 +45,9 @@ cd /var/www/myproject
 if [ ! -f .env ]; then
 	cp .env.example .env
 fi
-
+sudo sed -i 's/DB_DATABASE.*/DB_DATABASE=myrpoject/' .env
+sudo sed -i 's/DB_USERNAME.*/DB_USERNAME=myrpoject/' .env
+sudo sed -i 's/DB_PASSWORD.*/DB_PASSWORD=mypassword/' .env
 composer install
 php artisan key:generate
 

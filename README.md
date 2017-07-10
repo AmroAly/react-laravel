@@ -1,5 +1,5 @@
-## Vagrant React & Laravel 
-A basic Vagrant setup with Node.js, npm, React.js, Webpack, PHP7, Laravel 5.4, mysQl and Apache server. 
+## Vagrant React & Laravel
+A basic Vagrant setup with Node.js, npm, React.js, Webpack, PHP7, Laravel 5.4, mysQl and Apache server.
 
 ## Getting started
 
@@ -21,9 +21,9 @@ If you don't already have those, visit the downloads pages below and follow the 
 
 > vagrant up
 
-> Then go to your browser and visit localhost:8081
+> Then go to your browser and visit http://172.28.128.100:8081
 ```
-If you want to visit the Laravel project home page you can head over to `localhost:4000`
+If you want to visit the Laravel project home page you can head over to `http://172.28.128.10`
 
 After everything installs, you can run `vagrant ssh`. This will shell you in to your local Vagrant instance. Have a look around, if you'd like, but the main folder you want to be aware of is the shared `/www` directory. This directory is shared between your virtual machine and your local project directory.
 
