@@ -31,12 +31,6 @@ After everything installs, you can run `vagrant ssh`. This will shell you in to 
 
 I have set up the application structure where the Laravel development project files are in the `/var/www/myproject`, React development files are in the `/var/www/myproject/frontend` directory and the final, complied file which is bundle.js is output to the `/var/www/myproject/frontend/bundle.js` file. This can be changed to fit your projects needs. Just note that the changes would also need to be reflected in the `webpack.config.js` file.
 
-### Running the Webpack Dev Server
-
-To run the Webpack Dev Server, you will want to shell into your Vagrant server via the `vagrant ssh` command. From there, type `cd /var/www/myproject/frontend`. Now that you're in the right location, you just need to run `git clone` then `cd react-laravel` and finally `vagrant up`
-
-Now you can jump over to your browser and visit `localhost:8081` and see that appication is running!
-
 ### Bundle the project for distribution
 
 Running the Webpack Dev Server will not actually generate the output files. Instead it keeps and serves the resulting files from memory. When you're ready to generate the final output files for your project, `cd /var/www/myproject/frontend` and run `npm run build`. This will generate `bundle.js` file into the same directory!
