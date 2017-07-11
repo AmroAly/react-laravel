@@ -11,6 +11,7 @@ sudo apt-get update
 cd /var/www/myproject/frontend
 npm install
 npm run build
+npm run build
 
 sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
 sudo /sbin/mkswap /var/swap.1
