@@ -74,7 +74,7 @@ Vagrant.configure("2") do |config|
   # config.vm.provision "shell", path: "npmStart.sh", privileged: false, run: "always"
    # config.vm.synced_folder ".", "/vagrant", disabled: true
    config.vm.provision "file", source: "001-talented.conf", destination: "/tmp/001-talented.conf"
-	config.vm.synced_folder "www", "/var/www/", :mount_options => ["dmode=777","fmode=666"]  # , id: "vagrant-www", :owner => "vagrant", :group => "vagrant"
+	config.vm.synced_folder "www", "/var/www/", :mount_options => ["dmode=777","fmode=777"]  # , id: "vagrant-www", :owner => "vagrant", :group => "vagrant"
 	config.vm.define "backend" do |backend|
 		backend.vm.provision "shell", path: "deployLamp.sh", privileged: false
 		backend.vm.network "private_network", ip: "172.28.128.10"
