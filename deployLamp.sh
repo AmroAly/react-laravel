@@ -38,6 +38,12 @@ mv composer.phar composer
 chmod +x composer
 sudo mv composer /usr/local/bin
 
+
+
+sudo fallocate -l 1G /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+
 sudo chown -R vagrant:vagrant /var/www
 # composer global require laravel/installer
 cd /var/www/myproject
